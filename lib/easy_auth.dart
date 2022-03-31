@@ -14,4 +14,7 @@ export 'src/fields/login_password_field.dart';
 export 'src/fields/register_email_field.dart';
 export 'src/fields/register_password_field.dart';
 export 'src/fields/register_confirm_password_field.dart';
+export 'src/authentication_bloc/authentication_bloc.dart';
+export 'src/login/login_cubit.dart';
+export 'src/register/register_cubit.dart';
 
