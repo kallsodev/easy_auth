@@ -15,12 +15,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   AuthenticationBloc({
     required IAuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
-        super(
-          authenticationRepository.currentUser.isNotEmpty
-              ? AuthenticationState.authenticated(
-                  authenticationRepository.currentUser,
-                )
-              : const AuthenticationState.unauthenticated(),
+        super(const AuthenticationState.unknown()
         ) {
     on<UserChanged>(_onUserChanged);
     on<LogoutRequested>(_onLogoutRequested);

@@ -6,7 +6,9 @@ import 'authentication_bloc/authentication_bloc.dart';
 class EasyAuthLayer extends StatelessWidget {
   final Widget authenticated;
   final Widget unauthenticated;
-  const EasyAuthLayer({Key? key, required this.authenticated, required this.unauthenticated,}) : super(key: key);
+  final Widget unknown;
+  final Widget? anonymouslyAuthenticated;
+  const EasyAuthLayer({Key? key, required this.authenticated, required this.unauthenticated, required this.unknown, this.anonymouslyAuthenticated,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,10 @@ class EasyAuthLayer extends StatelessWidget {
             return authenticated;
           case AuthenticationStatus.unauthenticated:
             return unauthenticated;
+          case AuthenticationStatus.unknown:
+            return unknown;
+          case AuthenticationStatus.anonymouslyAuthenticated:
+            return anonymouslyAuthenticated ?? unauthenticated;
         }
       },
     );

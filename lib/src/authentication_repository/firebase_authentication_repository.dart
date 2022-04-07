@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 
-import '../cache.dart';
 import '../models/user.dart';
 import 'exceptions.dart';
 import 'authentication_repository_interface.dart';
@@ -17,14 +16,11 @@ import 'authentication_repository_interface.dart';
 class FirebaseAuthenticationRepository  implements IAuthenticationRepository{
   /// {@macro authentication_repository}
   FirebaseAuthenticationRepository({
-    CacheClient? cache,
     firebase_auth.FirebaseAuth? firebaseAuth,
     GoogleSignIn? googleSignIn,
-  })  : _cache = cache ?? CacheClient(),
-        _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
+  })  : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn.standard();
 
-  final CacheClient _cache;
   final firebase_auth.FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
@@ -34,11 +30,6 @@ class FirebaseAuthenticationRepository  implements IAuthenticationRepository{
   @visibleForTesting
   bool isWeb = kIsWeb;
 
-  /// User cache key.
-  /// Should only be used for testing purposes.
-  @visibleForTesting
-  static const userCacheKey = '__user_cache_key__';
-
   /// Stream of [User] which will emit the current user when
   /// the authentication state changes.
   ///
@@ -47,16 +38,8 @@ class FirebaseAuthenticationRepository  implements IAuthenticationRepository{
   Stream<User> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
       final user = firebaseUser == null ? User.empty : firebaseUser.toUser;
-      _cache.write(key: userCacheKey, value: user);
       return user;
     });
-  }
-
-  /// Returns the current cached user.
-  /// Defaults to [User.empty] if there is no cached user.
-  @override
-  User get currentUser {
-    return _cache.read<User>(key: userCacheKey) ?? User.empty;
   }
 
   /// Creates a new user with the provided [email] and [password].

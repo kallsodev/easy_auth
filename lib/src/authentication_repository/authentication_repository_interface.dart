@@ -7,8 +7,6 @@ abstract class IAuthenticationRepository {
 
   Stream<User> get user;
 
-  User get currentUser;
-
   Future<void> register({required String email, required String password});
 
   Future<void> logInWithGoogle();
