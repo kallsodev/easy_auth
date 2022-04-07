@@ -118,7 +118,7 @@ class FirebaseAuthenticationRepository  implements IAuthenticationRepository{
     try {
       await Future.wait([
         _firebaseAuth.signOut(),
-        //_googleSignIn.signOut(),
+        _googleSignIn.signOut(),
       ]);
     } catch (_) {
       throw LogOutFailure();
