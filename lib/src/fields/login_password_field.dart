@@ -25,7 +25,7 @@ class LoginPasswordField extends StatelessWidget {
     this.showCursor,
     this.autofocus = false,
     this.obscuringCharacter = '•',
-    this.obscureText = false,
+    this.obscureText = true,
     this.autocorrect = true,
     SmartDashesType? smartDashesType,
     SmartQuotesType? smartQuotesType,

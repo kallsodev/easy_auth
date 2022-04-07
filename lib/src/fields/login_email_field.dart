@@ -25,7 +25,7 @@ class LoginEmailField extends StatelessWidget {
     this.showCursor,
     this.autofocus = false,
     this.obscuringCharacter = '•',
-    this.obscureText = true,
+    this.obscureText = false,
     this.autocorrect = true,
     SmartDashesType? smartDashesType,
     SmartQuotesType? smartQuotesType,
