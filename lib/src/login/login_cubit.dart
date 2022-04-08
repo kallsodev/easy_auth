@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:formz/formz.dart';
 
 import '../authentication_repository/authentication_repository_interface.dart';
@@ -67,7 +68,10 @@ class LoginCubit extends Cubit<LoginState> {
           status: FormzStatus.submissionFailure,
         ),
       );
-    } catch (_) {
+    } catch (e) {
+      if(kDebugMode) {
+        print(e);
+      }
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
   }
