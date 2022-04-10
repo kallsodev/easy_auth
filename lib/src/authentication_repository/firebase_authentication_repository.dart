@@ -13,7 +13,7 @@ import 'authentication_repository_interface.dart';
 /// {@template authentication_repository}
 /// Repository which manages user authentication.
 /// {@endtemplate}
-class FirebaseAuthenticationRepository  implements IAuthenticationRepository{
+class FirebaseAuthenticationRepository implements IAuthenticationRepository {
   /// {@macro authentication_repository}
   FirebaseAuthenticationRepository({
     firebase_auth.FirebaseAuth? firebaseAuth,
@@ -56,6 +56,22 @@ class FirebaseAuthenticationRepository  implements IAuthenticationRepository{
       throw RegisterWithEmailAndPasswordFailure.fromCode(e.code);
     } catch (_) {
       throw const RegisterWithEmailAndPasswordFailure();
+    }
+  }
+
+  /// Requests a password reset for an account being linked to the given [email].
+  ///
+  /// Throws a [PasswordResetFailure] if an exception occurs.
+  @override
+  Future<void> passwordReset({required String email}) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(
+        email: email,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw PasswordResetFailure.fromCode(e.code);
+    } catch (_) {
+      throw const PasswordResetFailure();
     }
   }
 
