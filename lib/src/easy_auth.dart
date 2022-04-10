@@ -21,9 +21,7 @@ class EasyAuth {
     );
   }
 
-  static String currentUserId() {
-    return FirebaseAuth.instance.currentUser!.uid;
-  }
+  static String get currentUserId => FirebaseAuth.instance.currentUser!.uid;
 
   static Future<FirebaseApp> initializeFirebase({
     String? name,
