@@ -9,12 +9,15 @@ export 'src/buttons/login_button.dart';
 export 'src/buttons/register_button.dart';
 export 'src/buttons/logout_button.dart';
 export 'src/buttons/google_login_button.dart';
+export 'src/buttons/google_login_button.dart';
+export 'src/buttons/password_reset_button.dart';
 export 'src/fields/login_email_field.dart';
 export 'src/fields/login_password_field.dart';
+export 'src/fields/reset_password_email_field.dart';
 export 'src/fields/register_email_field.dart';
 export 'src/fields/register_password_field.dart';
 export 'src/fields/register_confirm_password_field.dart';
 export 'src/authentication_bloc/authentication_bloc.dart';
 export 'src/login/login_cubit.dart';
+export 'src/password_reset/password_reset_cubit.dart';
 export 'src/register/register_cubit.dart';
-
