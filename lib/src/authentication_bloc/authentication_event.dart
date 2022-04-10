@@ -9,6 +9,8 @@ abstract class AuthenticationEvent extends Equatable {
 
 class LogoutRequested extends AuthenticationEvent {}
 
+class PasswordResetRequested extends AuthenticationEvent {}
+
 class UserChanged extends AuthenticationEvent {
   @visibleForTesting
   const UserChanged(this.user);

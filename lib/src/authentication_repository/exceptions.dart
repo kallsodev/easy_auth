@@ -80,6 +80,41 @@ class LogInWithEmailAndPasswordFailure implements Exception {
   final String message;
 }
 
+/// {@template password_reset_failure}
+/// Thrown during the password reset process if a failure occurs.
+/// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/signInWithEmailAndPassword.html
+/// {@endtemplate}
+class PasswordResetFailure implements Exception {
+  /// {@macro password_reset_failure}
+  const PasswordResetFailure([
+    this.message = 'An unknown exception occurred.',
+  ]);
+
+  /// Create an authentication message
+  /// from a firebase authentication exception code.
+  factory PasswordResetFailure.fromCode(String code) {
+    switch (code) {
+      case 'invalid-email':
+        return const PasswordResetFailure(
+          'Email is not valid or badly formatted.',
+        );
+      case 'user-disabled':
+        return const PasswordResetFailure(
+          'This user has been disabled. Please contact support for help.',
+        );
+      case 'user-not-found':
+        return const PasswordResetFailure(
+          'Email is not found, please create an account.',
+        );
+      default:
+        return const PasswordResetFailure();
+    }
+  }
+
+  /// The associated error message.
+  final String message;
+}
+
 /// {@template log_in_with_google_failure}
 /// Thrown during the sign in with google process if a failure occurs.
 /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/signInWithCredential.html
