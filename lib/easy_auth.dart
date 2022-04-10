@@ -4,6 +4,7 @@ export 'src/easy_auth.dart';
 export 'src/easy_auth_init.dart';
 export 'src/easy_auth_layer.dart';
 export 'src/easy_auth_login_provider.dart';
+export 'src/easy_auth_reset_password_provider.dart';
 export 'src/easy_auth_register_provider.dart';
 export 'src/buttons/login_button.dart';
 export 'src/buttons/register_button.dart';
