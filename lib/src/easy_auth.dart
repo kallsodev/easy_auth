@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,10 @@ class EasyAuth {
       },
       (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
     );
+  }
+
+  static String currentUserId() {
+    return FirebaseAuth.instance.currentUser!.uid;
   }
 
   static Future<FirebaseApp> initializeFirebase({
