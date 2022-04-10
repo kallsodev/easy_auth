@@ -67,7 +67,7 @@ class RegisterConfirmPasswordField extends StatelessWidget {
     this.clipBehavior = Clip.hardEdge,
     this.restorationId,
     this.enableIMEPersonalizedLearning = true,
-    this.errorText,
+    this.errorText, this.height, this.width,
   })  : assert(obscuringCharacter.length == 1),
         smartDashesType =
             smartDashesType ?? (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
@@ -500,72 +500,80 @@ class RegisterConfirmPasswordField extends StatelessWidget {
 
   final String? errorText;
 
+  final double? height;
+
+  final double? width;
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RegisterCubit, RegisterState>(
-      buildWhen: (previous, current) =>
-      previous.password != current.password ||
-          previous.confirmedPassword != current.confirmedPassword,
-      builder: (context, state) {
-        return TextField(
-          key: const Key('register_confirm_password_textField'),
-          onChanged: (password) =>
-              context.read<RegisterCubit>().confirmedPasswordChanged(password),
-          decoration: decoration.copyWith(
-              errorText: state.confirmedPassword.invalid ? errorText : null),
-          style: style,
-          controller: controller,
-          focusNode: focusNode,
-          keyboardType: keyboardType,
-          textCapitalization: textCapitalization,
-          textInputAction: textInputAction,
-          textAlign: textAlign,
-          textAlignVertical: textAlignVertical,
-          textDirection: textDirection,
-          toolbarOptions: toolbarOptions,
-          obscureText: obscureText,
-          onTap: onTap,
-          maxLength: maxLength,
-          scrollController: scrollController,
-          onSubmitted: onSubmitted,
-          autocorrect: autocorrect,
-          autofillHints: autofillHints,
-          autofocus: autofocus,
-          buildCounter: buildCounter,
-          cursorHeight: cursorHeight,
-          cursorWidth: cursorWidth,
-          dragStartBehavior: dragStartBehavior,
-          enableInteractiveSelection: enableInteractiveSelection,
-          enableSuggestions: enableSuggestions,
-          inputFormatters: inputFormatters,
-          maxLengthEnforced: maxLengthEnforced,
-          maxLengthEnforcement: maxLengthEnforcement,
-          obscuringCharacter: obscuringCharacter,
-          onAppPrivateCommand: onAppPrivateCommand,
-          onEditingComplete: onEditingComplete,
-          restorationId: restorationId,
-          selectionControls: selectionControls,
-          selectionHeightStyle: selectionHeightStyle,
-          selectionWidthStyle: selectionWidthStyle,
-          smartDashesType: smartDashesType,
-          smartQuotesType: smartQuotesType,
-          strutStyle: strutStyle,
-          clipBehavior: clipBehavior,
-          enabled: enabled,
-          maxLines: maxLines,
-          cursorRadius: cursorRadius,
-          enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
-          expands: expands,
-          keyboardAppearance: keyboardAppearance,
-          readOnly: readOnly,
-          scrollPadding: scrollPadding,
-          minLines: minLines,
-          mouseCursor: mouseCursor,
-          showCursor: showCursor,
-          cursorColor: cursorColor,
-          scrollPhysics: scrollPhysics,
-        );
-      },
+    return SizedBox(
+      height: height,
+      width: width,
+      child: BlocBuilder<RegisterCubit, RegisterState>(
+        buildWhen: (previous, current) =>
+        previous.password != current.password ||
+            previous.confirmedPassword != current.confirmedPassword,
+        builder: (context, state) {
+          return TextField(
+            key: const Key('register_confirm_password_textField'),
+            onChanged: (password) =>
+                context.read<RegisterCubit>().confirmedPasswordChanged(password),
+            decoration: decoration.copyWith(
+                errorText: state.confirmedPassword.invalid ? errorText : null),
+            style: style,
+            controller: controller,
+            focusNode: focusNode,
+            keyboardType: keyboardType,
+            textCapitalization: textCapitalization,
+            textInputAction: textInputAction,
+            textAlign: textAlign,
+            textAlignVertical: textAlignVertical,
+            textDirection: textDirection,
+            toolbarOptions: toolbarOptions,
+            obscureText: obscureText,
+            onTap: onTap,
+            maxLength: maxLength,
+            scrollController: scrollController,
+            onSubmitted: onSubmitted,
+            autocorrect: autocorrect,
+            autofillHints: autofillHints,
+            autofocus: autofocus,
+            buildCounter: buildCounter,
+            cursorHeight: cursorHeight,
+            cursorWidth: cursorWidth,
+            dragStartBehavior: dragStartBehavior,
+            enableInteractiveSelection: enableInteractiveSelection,
+            enableSuggestions: enableSuggestions,
+            inputFormatters: inputFormatters,
+            maxLengthEnforced: maxLengthEnforced,
+            maxLengthEnforcement: maxLengthEnforcement,
+            obscuringCharacter: obscuringCharacter,
+            onAppPrivateCommand: onAppPrivateCommand,
+            onEditingComplete: onEditingComplete,
+            restorationId: restorationId,
+            selectionControls: selectionControls,
+            selectionHeightStyle: selectionHeightStyle,
+            selectionWidthStyle: selectionWidthStyle,
+            smartDashesType: smartDashesType,
+            smartQuotesType: smartQuotesType,
+            strutStyle: strutStyle,
+            clipBehavior: clipBehavior,
+            enabled: enabled,
+            maxLines: maxLines,
+            cursorRadius: cursorRadius,
+            enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
+            expands: expands,
+            keyboardAppearance: keyboardAppearance,
+            readOnly: readOnly,
+            scrollPadding: scrollPadding,
+            minLines: minLines,
+            mouseCursor: mouseCursor,
+            showCursor: showCursor,
+            cursorColor: cursorColor,
+            scrollPhysics: scrollPhysics,
+          );
+        },
+      ),
     );
   }
 }
