@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:easy_auth/easy_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,4 +29,12 @@ class EasyAuth {
     FirebaseOptions? options,
   }) =>
       Firebase.initializeApp(name: name, options: options);
+
+  static void logout(BuildContext context) {
+    context.read<AuthenticationBloc>().add(LogoutRequested());
+  }
+
+  static void login(BuildContext context) {
+    context.read<LoginCubit>().logInWithCredentials();
+  }
 }
