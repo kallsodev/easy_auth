@@ -543,7 +543,6 @@ class LoginEmailField extends StatelessWidget {
             enableInteractiveSelection: enableInteractiveSelection,
             enableSuggestions: enableSuggestions,
             inputFormatters: inputFormatters,
-            maxLengthEnforced: maxLengthEnforced,
             maxLengthEnforcement: maxLengthEnforcement,
             obscuringCharacter: obscuringCharacter,
             onAppPrivateCommand: onAppPrivateCommand,
