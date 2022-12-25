@@ -8,12 +8,12 @@ environment:
 
 dependencies:
   formz: ^0.4.1
-  equatable: ^2.0.3
-  firebase_auth: ^3.3.11
-  firebase_core: ^1.13.1
-  google_sign_in: ^5.2.4
-  meta: ^1.7.0
-  flutter_bloc: ^8.0.1
+  equatable: ^2.0.5
+  firebase_auth: ^4.2.3
+  firebase_core: ^2.4.0
+  google_sign_in: ^5.4.2
+  meta: ^1.8.0
+  flutter_bloc: ^8.1.1
 
   flutter:
     sdk: flutter
